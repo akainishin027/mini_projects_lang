@@ -12,7 +12,7 @@ resource manager, etc.
 
 The code has a lot of flaws, but that the good thing!!.
 
-## How to run 
+## Dependencies
 miniquad
 
 ## How to run 

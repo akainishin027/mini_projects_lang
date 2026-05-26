@@ -1,49 +1,43 @@
-# stm32multidevice
+# gesture_controller
 
-https://github.com/user-attachments/assets/d35640fc-b94d-440d-af18-d244fd55ea62
+This is a remote controller based on computer vision
+using YOLO models to detect and classify and hand gesture
+to execute commands in a MCU STM32 blue pill.
 
-A bunch of controls for multiple devices connected to the same
-STM32F103COT6 microcontroller. All task for each device run in parallel
-using an scheduler without RTOS. This is faster and use less resources,
-but program size become larger.
+I'll say the trained models are heavy overfitted since 
+they was trained with very few data.
 
-Devices connected: <br>
-SG-510 servomotor <br>
-SSD1306 I2C OLED Display <br>
-Thermistor NTC 5kOhm <br>
-HC-SR04 Ultrasonic distance sensor <br>
-Led <br>
-Button <br>
-
-The idea of this mini project is to test rust capabilities in IoT
-and parallel program execution without RTOS.
-
-![](./resources/stm32.jpeg)
-
-## Dependecies
-
-cortex-m  <br>
-cortex-m-rt <br>
-embassy-stm32  <br>
-embassy-executor  <br>
-embassy-time  <br>
-embassy-sync  <br>
-embassy-futures <br>
-embedded-graphics  <br>
-ssd1306  <br>
-heapless  <br>
-deffmt  <br>
-deffmt-m-rt <br>
-libm  <br>
-panic-halt <br>
-panic-probe <br>
-static-cell  <br>
+![](./docs/close_annotated.jpg)
+![](./docs/open_annotated.jpg)
 
 ## How to use
-Connect your programmer to MCU and run the next command in root directory.
+First compiles the C++ programm running.
 
 ```zsh
-cargo run
+cd app/
+mkdir build\
+cmake -S . -B build
+cmake --build build
 
+./build/HandController --camera
 ```
+
+Then runs the rust program to program the MCU running.
+
+```zsh
+cd ble_gesture_controller
+cargo run
+```
+
+If you want instead to train models you need to install yolo ultralitic,
+some YOLO models for classification and detection and then run next commands
+in project's root.
+
+```zsh
+./train_gesture_classification.sh
+
+./train_hand_detection.sh
+```
+
+Of course you will need dataset and labeled images for fine-tunning if needed.
 

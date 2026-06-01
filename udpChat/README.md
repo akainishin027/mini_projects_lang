@@ -10,10 +10,10 @@ it is still usefull to know its limitation and characteristics.
 This projects has two version. 
 
 ## 1. P2P
-In the P2P (pear-to-pear) version each client talk to other client directry
+In the P2P (peer-to-peer) version each client talk to other client directry
 without an intermediate server. This is better for data privacy and 
 also is faster since server do not act as a bottleneck in massive communication.
-Also it reduces change of data corruption while server process a request,
+Also it reduces chance of data corruption while server process a request,
 which will be frequent due to UDP nature.
 
 The main drawback, in this version, is that user must to know somehow IP address
